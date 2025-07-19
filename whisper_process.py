@@ -5,14 +5,16 @@ from pathlib import Path
 import click
 from faster_whisper import WhisperModel
 
+from config import whisper_device, whisper_compute_type
+
 
 def process_new_audio(input_file_path: Path, output_folder: Path):
     print(f"Processing file: {input_file_path}")
     model_size = "large-v3"
 
-    # Run on CPU with INT8
+
     with TimeBlock("Model loading"):
-        model = WhisperModel(model_size, device="cpu", compute_type="int8")
+        model = WhisperModel(model_size, device=whisper_device, compute_type=whisper_compute_type)
 
     with TimeBlock("Transcription"):
         segments, info = model.transcribe(str(input_file_path), beam_size=5)
