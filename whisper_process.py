@@ -45,7 +45,7 @@ class TimeBlock:
 @click.argument("output_folder", type=click.Path(exists=True, writable=True, path_type=Path))
 def main(input_file, output_folder):
     """Process audio files and save transcription results."""
-    process_new_text(input_file, output_folder)
+    process_new_audio(input_file, output_folder)
 
 
 if __name__ == "__main__":
