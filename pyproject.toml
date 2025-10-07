@@ -1,5 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
 name = "llm_automation"
 version = "0.1.0"
-license = "Apache-2.0"
-homepage = "https://github.com/cwmeijer/llm_automation"
-dependencies = ["click", "ollama", "faster-whisper"]
+description = "LLM automation tools for audio transcription and text processing"
+authors = [{name = "Christiaan Meijer"}]
+license = {text = "Apache-2.0"}
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "click",
+    "ollama",
+    "faster-whisper"
+]
+
+[project.urls]
+Homepage = "https://github.com/cwmeijer/llm_automation"
+Repository = "https://github.com/cwmeijer/llm_automation"
+
+[project.scripts]
+llm-watch = "llm_automation.watch:main"
+llm-whisper = "llm_automation.whisper_process:main"
+
+[project.optional-dependencies]
+dev = ["pytest", "mypy", "pylint"]
