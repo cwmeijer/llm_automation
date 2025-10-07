@@ -13,6 +13,10 @@ def check_folder_and_process_uprocessed_files(folder_path: Path, processing_func
     unprocessed_folder = folder_path / 'unprocessed'
     processed_folder = folder_path / 'processed'
 
+    unprocessed_folder.mkdir(parents=True, exist_ok=True)
+    processed_folder.mkdir(parents=True, exist_ok=True)
+    output_folder.mkdir(parents=True, exist_ok=True)
+
     # List files in the unprocessed folder
     for file_path in unprocessed_folder.iterdir():
         if file_path.name.startswith('.'):
